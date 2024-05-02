@@ -76,7 +76,7 @@ const DocumentCard = ({ idType }) => {
   };
 
   return (
-    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-auto">
+    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px]">
       <div>
         <h2 className="text-black font-bold text-lg lg:text-3xl">{idType}</h2>
       </div>
