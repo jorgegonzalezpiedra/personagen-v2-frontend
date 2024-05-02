@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/navbar/Navbar.jsx";
-import IdsPage from "./pages/idspage/IdsPage.jsx";
+import IdsPage from "./pages/ids/IdsPage.jsx";
 import UserPage from "./pages/user/UserPage.jsx";
 import TextPage from "./pages/text/TextPage.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
