@@ -1,49 +1,13 @@
 import "./Navbar.css";
-
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  
-  const [nif, setNif] = useState({
-    document: null,
-    number: null,
-    letter: null,
-  });
-
-  const handleClick = async (itemId) => {
-
-    switch (itemId) {
-      case 1:
-        try {
-          const response = await fetch("http://localhost:8080/documents/nif"); // Replace with your API URL
-          const responseData = await response.json();
-          setNif({
-            document: responseData.document,
-            number: responseData.number,
-            letter: responseData.letter,
-          });
-          console.log(nif.document)
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          // Handle errors appropriately (e.g., display an error message to the user)
-        }
-
-        break;
-
-      case 2:
-        break;
-
-      case 3:
-        break;
-    }
-  };
-
   // Array containing navigation items
   const navItems = [
-    { id: 1, text: "ID's" },
-    { id: 2, text: "Usuarios" },
-    { id: 3, text: "Textos" },
-    { id: 4, text: "Docs" },
+    { id: 1, text: "ID's", redirectto: "/idsdata" },
+    { id: 2, text: "Usuarios", redirectto: "/userdata" },
+    { id: 3, text: "Textos", redirectto: "/textdata" },
+    { id: 4, text: "Docs", redirectto: "/userdat" },
   ];
 
   return (
@@ -55,18 +19,13 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <ul className="hidden md:flex">
         {navItems.map((item) => (
-          <button
+          <Link
             key={item.id}
+            to={item.redirectto}
             className="p-4 hover:bg-[#D1BB9E] text-[#592407] rounded-xl m-2 cursor-pointer duration-300"
-            onClick={() => handleClick(item.id)}
           >
-            {nif && (
-              <pre>
-                Field 1: {nif.document} <br />
-              </pre>
-            )}
             {item.text}
-          </button>
+          </Link>
         ))}
       </ul>
     </div>

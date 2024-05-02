@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    cursor: {
+      'copyx': 'url(./src/assets/cursor-copy.png), default',
+    }
   },
   plugins: [],
 }
