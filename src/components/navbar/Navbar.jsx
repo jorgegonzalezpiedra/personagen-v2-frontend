@@ -1,13 +1,41 @@
 import "./Navbar.css";
-import React, { useState } from 'react';
+
+import { useState } from "react";
 
 const Navbar = () => {
-  // State to manage the navbar's visibility
-  const [nav, setNav] = useState(false);
+  
+  const [nif, setNif] = useState({
+    document: null,
+    number: null,
+    letter: null,
+  });
 
-  // Toggle function to handle the navbar's display
-  const handleNav = () => {
-    setNav(!nav);
+  const handleClick = async (itemId) => {
+
+    switch (itemId) {
+      case 1:
+        try {
+          const response = await fetch("http://localhost:8080/documents/nif"); // Replace with your API URL
+          const responseData = await response.json();
+          setNif({
+            document: responseData.document,
+            number: responseData.number,
+            letter: responseData.letter,
+          });
+          console.log(nif.document)
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // Handle errors appropriately (e.g., display an error message to the user)
+        }
+
+        break;
+
+      case 2:
+        break;
+
+      case 3:
+        break;
+    }
   };
 
   // Array containing navigation items
@@ -15,7 +43,7 @@ const Navbar = () => {
     { id: 1, text: "ID's" },
     { id: 2, text: "Usuarios" },
     { id: 3, text: "Textos" },
-    { id: 4, text: "Docs" }
+    { id: 4, text: "Docs" },
   ];
 
   return (
@@ -27,12 +55,18 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <ul className="hidden md:flex">
         {navItems.map((item) => (
-          <li
+          <button
             key={item.id}
             className="p-4 hover:bg-[#D1BB9E] text-[#592407] rounded-xl m-2 cursor-pointer duration-300"
+            onClick={() => handleClick(item.id)}
           >
+            {nif && (
+              <pre>
+                Field 1: {nif.document} <br />
+              </pre>
+            )}
             {item.text}
-          </li>
+          </button>
         ))}
       </ul>
     </div>
