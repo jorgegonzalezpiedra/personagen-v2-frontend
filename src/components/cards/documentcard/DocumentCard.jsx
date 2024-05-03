@@ -1,6 +1,7 @@
 import "./DocumentCard.css";
-import { RestartIcon32 } from "../../../assets/Icons";
+import { RestartIcon32, MoreInfoIcon } from "../../../assets/Icons";
 import PropTypes from "prop-types";
+import CopyToClipboard from "react-copy-to-clipboard";
 import { useState, useEffect } from "react";
 
 const DocumentCard = ({ idType }) => {
@@ -8,6 +9,7 @@ const DocumentCard = ({ idType }) => {
     loadComponent(idType);
   }, []);
 
+  const [moreInfo, setMoreInfo] = useState(false);
   const [document, setDocument] = useState("");
   const [number, setNumber] = useState("");
 
@@ -77,107 +79,125 @@ const DocumentCard = ({ idType }) => {
 
   return (
     <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px] mr-5">
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-between">
         <h2 className="text-black font-bold text-lg lg:text-3xl">{idType}</h2>
-        <div className="flex flex-col flex-1">
-          <div className="flex flex-col w-[100px] gap-3 sm:flex-row mt-3">
-            <button
-              onClick={() => loadComponent(idType)}
-              className="text-black items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
-            >
-              <RestartIcon32 />
-            </button>
-          </div>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button
+            onClick={() => loadComponent(idType)}
+            className="text-black items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
+          >
+            <RestartIcon32 />
+          </button>
         </div>
       </div>
-      <div className="px-6 py-8 sm:p-10 sm:pb-6">
-        <div className="items-center w-full justify-center grid grid-cols-1 text-left">
+      <div className="px-6 py-8 sm:p-10 sm:pt-3 sm:pb-6">
+        <div className="items-center w-full justify-center flex flex-col text-left">
           <div className="mt-2">
             <span className="text-black tracking-tight xl:text-4xl">
               Documento
             </span>
-            <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-              {document}
-            </span>
+            <CopyToClipboard text={document}>
+              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                {document}
+              </span>
+            </CopyToClipboard>
           </div>
           <div className="mt-2">
             <span className="text-black tracking-tight xl:text-4xl">
               Número
             </span>
-            <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-              {number}
-            </span>
+            <CopyToClipboard text={number}>
+              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                {number}
+              </span>
+            </CopyToClipboard>
           </div>
-          {idType == "NIE" ? (
+          {(idType == "NIE" || idType == "CIF") && !moreInfo ? (
+            <div className="border-t-2 border-black mt-5">
+              <button
+                onClick={() => setMoreInfo(true)}
+                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:px-8 lg:py-4 lg:text-4xl px-4 py-2"
+              >
+                MAS INFO
+              </button>
+            </div>
+          ) : null}
+          {idType == "NIE" && moreInfo ? (
             <div className="flex mt-2">
               <div className="mt-2">
                 <span className="text-black tracking-tight xl:text-4xl">
                   Primera letra
                 </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {nie.firstLetter}
-                </span>
+                <CopyToClipboard text={nie.firstLetter}>
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                    {nie.firstLetter}
+                  </span>
+                </CopyToClipboard>
               </div>
               <div className="mt-2">
                 <span className="text-black tracking-tight xl:text-4xl">
                   Última letra
                 </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {nie.lastLetter}
-                </span>
+                <CopyToClipboard text={nie.lastLetter}>
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                    {nie.lastLetter}
+                  </span>
+                </CopyToClipboard>
               </div>
             </div>
           ) : null}
-          {idType == "CIF" ? (
+          {idType == "CIF" && moreInfo ? (
             <div className="mt-2">
-              <div className="mt-2">
-                <span className="text-black tracking-tight xl:text-4xl">
-                  Codigo de tipo de empresa
-                </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {cif.orgTypeCode}
-                </span>
-              </div>
               <div className="mt-2">
                 <span className="text-black tracking-tight xl:text-4xl">
                   Tipo de empresa
                 </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {cif.orgType}
-                </span>
+                <CopyToClipboard text={cif.orgTypeCode - cif.orgType}>
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                    {cif.orgTypeCode} - {cif.orgType}
+                  </span>
+                </CopyToClipboard>
               </div>
               <div className="mt-2">
                 <span className="text-black tracking-tight xl:text-4xl">
                   Codigo de provincia
                 </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {cif.provinceCode}
-                </span>
+                <CopyToClipboard text={cif.provinceCode - cif.province}>
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                    {cif.provinceCode} - {cif.province}
+                  </span>
+                </CopyToClipboard>
               </div>
-              <div className="mt-2">
-                <span className="text-black tracking-tight xl:text-4xl">
-                  Provincia
-                </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {cif.province}
-                </span>
-              </div>
-              <div className="mt-2">
+              {/* <div className="mt-2">
                 <span className="text-black tracking-tight xl:text-4xl">
                   Número correlativo
                 </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {cif.correlativeNumber}
-                </span>
+                <CopyToClipboard text={cif.correlativeNumber}>
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                    {cif.correlativeNumber}
+                  </span>
+                </CopyToClipboard>
               </div>
               <div className="mt-2">
                 <span className="text-black tracking-tight xl:text-4xl">
                   Dígito de control
                 </span>
-                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
-                  {cif.controlDigit}
-                </span>
-              </div>
+                <CopyToClipboard text={cif.controlDigit}>
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                    {cif.controlDigit}
+                  </span>
+                </CopyToClipboard>
+              </div> */}
+            </div>
+          ) : null}
+          {(idType == "NIE" || idType == "CIF") && moreInfo ? (
+            <div className="border-t-2 border-black mt-5">
+              <button
+                onClick={() => setMoreInfo(false)}
+                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:px-8 lg:py-4 lg:text-4xl px-4 py-2"
+              >
+                MENOS INFO
+              </button>
             </div>
           ) : null}
         </div>
