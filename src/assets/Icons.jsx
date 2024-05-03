@@ -1,6 +1,6 @@
 export const RestartIcon32 = () => {
     return(
-      <svg fill="#000000" width="32px" height="32px" viewBox="-7.5 0 32 32" version="1.1"
+      <svg className="hover:fill-white" width="64px" height="64px" viewBox="-7.5 0 32 32" version="1.1"
           xmlns="http://www.w3.org/2000/svg">
           <title>restart</title>
           <path
