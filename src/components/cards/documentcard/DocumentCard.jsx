@@ -78,9 +78,9 @@ const DocumentCard = ({ idType }) => {
   };
 
   return (
-    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px] mr-5">
+    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px] mr-5 sm:max-xl:mt-5">
       <div className="flex flex-row justify-between">
-        <h2 className="text-black font-bold text-lg lg:text-3xl">{idType}</h2>
+        <h2 className="text-black font-bold text-3xl">{idType}</h2>
         <div className="flex flex-col gap-3 sm:flex-row">
           <button
             onClick={() => loadComponent(idType)}
@@ -93,30 +93,30 @@ const DocumentCard = ({ idType }) => {
       <div className="px-6 py-8 sm:p-10 sm:pt-3 sm:pb-6">
         <div className="items-center w-full justify-center flex flex-col text-left">
           <div className="mt-2">
-            <span className="text-black tracking-tight xl:text-4xl">
+            <span className="text-black tracking-tight text-4xl">
               Documento
             </span>
             <CopyToClipboard text={document}>
-              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                 {document}
               </span>
             </CopyToClipboard>
           </div>
           <div className="mt-2">
-            <span className="text-black tracking-tight xl:text-4xl">
+            <span className="text-black tracking-tight text-4xl">
               Número
             </span>
             <CopyToClipboard text={number}>
-              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                 {number}
               </span>
             </CopyToClipboard>
           </div>
-          {(idType == "NIE" || idType == "CIF") && !moreInfo ? (
+          {idType == "CIF" && !moreInfo ? (
             <div className="border-t-2 border-black mt-5">
               <button
                 onClick={() => setMoreInfo(true)}
-                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:px-8 lg:py-4 lg:text-4xl px-4 py-2"
+                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl"
               >
                 MAS INFO
               </button>
@@ -125,21 +125,21 @@ const DocumentCard = ({ idType }) => {
           {idType == "NIE" && moreInfo ? (
             <div className="flex mt-2">
               <div className="mt-2">
-                <span className="text-black tracking-tight xl:text-4xl">
+                <span className="text-black tracking-tight text-4xl">
                   Primera letra
                 </span>
                 <CopyToClipboard text={nie.firstLetter}>
-                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8py-4 text-4xl">
                     {nie.firstLetter}
                   </span>
                 </CopyToClipboard>
               </div>
               <div className="mt-2">
-                <span className="text-black tracking-tight xl:text-4xl">
+                <span className="text-black tracking-tight text-4xl">
                   Última letra
                 </span>
                 <CopyToClipboard text={nie.lastLetter}>
-                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                     {nie.lastLetter}
                   </span>
                 </CopyToClipboard>
@@ -149,21 +149,21 @@ const DocumentCard = ({ idType }) => {
           {idType == "CIF" && moreInfo ? (
             <div className="mt-2">
               <div className="mt-2">
-                <span className="text-black tracking-tight xl:text-4xl">
+                <span className="text-black tracking-tight text-4xl">
                   Tipo de empresa
                 </span>
                 <CopyToClipboard text={cif.orgTypeCode - cif.orgType}>
-                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                     {cif.orgTypeCode} - {cif.orgType}
                   </span>
                 </CopyToClipboard>
               </div>
               <div className="mt-2">
-                <span className="text-black tracking-tight xl:text-4xl">
+                <span className="text-black tracking-tight text-4xl">
                   Codigo de provincia
                 </span>
                 <CopyToClipboard text={cif.provinceCode - cif.province}>
-                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full lg:px-8 lg:py-4 lg:text-4xl px-4 py-2">
+                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                     {cif.provinceCode} - {cif.province}
                   </span>
                 </CopyToClipboard>
@@ -194,7 +194,7 @@ const DocumentCard = ({ idType }) => {
             <div className="border-t-2 border-black mt-5">
               <button
                 onClick={() => setMoreInfo(false)}
-                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:px-8 lg:py-4 lg:text-4xl px-4 py-2"
+                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl"
               >
                 MENOS INFO
               </button>

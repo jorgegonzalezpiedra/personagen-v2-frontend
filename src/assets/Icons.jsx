@@ -26,11 +26,7 @@ export const MoreInfoIcon = () => {
       <title>plus</title>
       <desc>Created with Sketch Beta.</desc>
       <defs></defs>
-      <g
-        id="Page-1"
-        stroke="none"
-        fill="none"
-      >
+      <g id="Page-1" stroke="none" fill="none">
         <g
           id="Icon-Set"
           transform="translate(-360.000000, -1035.000000)"
@@ -41,6 +37,32 @@ export const MoreInfoIcon = () => {
             id="plus"
           ></path>
         </g>
+      </g>
+    </svg>
+  );
+};
+
+export const MenuIcon = () => {
+  return (
+    <svg
+      width="800px"
+      height="800px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" />
+
+      <g
+        id="SVGRepo_tracerCarrier"
+      />
+
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M4 6H20M4 12H20M4 18H20"
+          stroke="#592407"
+        />
       </g>
     </svg>
   );
