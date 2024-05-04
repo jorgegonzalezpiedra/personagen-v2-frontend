@@ -34,7 +34,7 @@ const DocumentCard = ({ idType }) => {
   const loadComponent = async (idType) => {
     try {
       if (idType == "NIF") {
-        const response = await fetch("http://localhost:8080/documents/nif"); // Replace with your API URL
+        const response = await fetch("https://personagen.fly.dev/documents/nif"); // Replace with your API URL
         const responseData = await response.json();
         setDocument(responseData.document);
         setNumber(responseData.number);
@@ -44,7 +44,7 @@ const DocumentCard = ({ idType }) => {
       }
 
       if (idType == "NIE") {
-        const responseNie = await fetch("http://localhost:8080/documents/nie"); // Replace with your API URL
+        const responseNie = await fetch("https://personagen.fly.dev/documents/nie"); // Replace with your API URL
         const responseDataNie = await responseNie.json();
         setDocument(responseDataNie.document);
         setNumber(responseDataNie.number);
@@ -55,7 +55,7 @@ const DocumentCard = ({ idType }) => {
       }
 
       if (idType == "CIF") {
-        const responseCif = await fetch("http://localhost:8080/documents/cif");
+        const responseCif = await fetch("https://personagen.fly.dev/documents/cif");
         const responseDataCif = await responseCif.json();
         setDocument(responseDataCif.document);
         setNumber(responseDataCif.number);
