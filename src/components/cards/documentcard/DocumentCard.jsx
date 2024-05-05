@@ -1,5 +1,5 @@
 import "./DocumentCard.css";
-import { RestartIcon32, MoreInfoIcon } from "../../../assets/Icons";
+import { RestartIcon} from "../../../assets/Icons";
 import PropTypes from "prop-types";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useState, useEffect } from "react";
@@ -86,7 +86,7 @@ const DocumentCard = ({ idType }) => {
             onClick={() => loadComponent(idType)}
             className="text-black items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
           >
-            <RestartIcon32 />
+            <RestartIcon/>
           </button>
         </div>
       </div>

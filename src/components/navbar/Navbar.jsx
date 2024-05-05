@@ -14,7 +14,7 @@ const Navbar = () => {
     { id: 1, text: "ID's", redirectto: "/idsdata" },
     { id: 2, text: "Usuarios", redirectto: "/userdata" },
     { id: 3, text: "Textos", redirectto: "/textdata" },
-    { id: 4, text: "Docs", redirectto: "/userdat" },
+    { id: 4, text: "Docs", redirectto: "/docsdata" },
   ];
 
   return (

@@ -1,4 +1,4 @@
-export const RestartIcon32 = () => {
+export const RestartIcon = () => {
   return (
     <svg
       className="hover:fill-white"

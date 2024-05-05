@@ -1,6 +1,6 @@
-import "./TextPage.css";
+import "./DocsPage.css";
 
-const TextPage = () => {
+const DocsPage = () => {
   return (
     <div className="flex xl:flex-row sm:max-xl:items-center flex-col justify-center items-start mt-5">
       <div
@@ -24,7 +24,7 @@ const TextPage = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
-export default TextPage;
+export default DocsPage;
