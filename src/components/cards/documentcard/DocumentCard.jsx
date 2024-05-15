@@ -12,6 +12,7 @@ const DocumentCard = ({ idType }) => {
   const [moreInfo, setMoreInfo] = useState(false);
   const [document, setDocument] = useState("");
   const [number, setNumber] = useState("");
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   const [nif, setNif] = useState({
     letter: null,
@@ -34,7 +35,7 @@ const DocumentCard = ({ idType }) => {
   const loadComponent = async (idType) => {
     try {
       if (idType == "NIF") {
-        const response = await fetch("https://personagen.fly.dev/documents/nif"); // Replace with your API URL
+        const response = await fetch("https://personagen.fly.dev/documents/nif", {headers:{"api-key" : API_KEY}});
         const responseData = await response.json();
         setDocument(responseData.document);
         setNumber(responseData.number);
@@ -44,7 +45,7 @@ const DocumentCard = ({ idType }) => {
       }
 
       if (idType == "NIE") {
-        const responseNie = await fetch("https://personagen.fly.dev/documents/nie"); // Replace with your API URL
+        const responseNie = await fetch("https://personagen.fly.dev/documents/nie", {headers:{"api-key" : API_KEY}}); // Replace with your API URL
         const responseDataNie = await responseNie.json();
         setDocument(responseDataNie.document);
         setNumber(responseDataNie.number);
@@ -55,7 +56,7 @@ const DocumentCard = ({ idType }) => {
       }
 
       if (idType == "CIF") {
-        const responseCif = await fetch("https://personagen.fly.dev/documents/cif");
+        const responseCif = await fetch("https://personagen.fly.dev/documents/cif", {headers:{"api-key" : API_KEY}});
         const responseDataCif = await responseCif.json();
         setDocument(responseDataCif.document);
         setNumber(responseDataCif.number);
@@ -78,7 +79,7 @@ const DocumentCard = ({ idType }) => {
   };
 
   return (
-    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px] mr-5 sm:max-xl:mt-5">
+    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px] sm:max-xl:mt-5">
       <div className="flex flex-row justify-between">
         <h2 className="text-black font-bold text-3xl">{idType}</h2>
         <div className="flex flex-col gap-3 sm:flex-row">

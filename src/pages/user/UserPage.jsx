@@ -5,7 +5,7 @@ const UserPage = () => {
     <div className="flex xl:flex-row sm:max-xl:items-center flex-col justify-center items-start mt-5">
       <div
         className="flex flex-col border-2 border-black overflow-hidden p-8
-      rounded-xl shadow-large bg-yellow-200 w-[500px] mr-5 sm:max-xl:mt-5"
+      rounded-xl shadow-large bg-yellow-200 w-[500px] sm:max-xl:mt-5"
       >
         <div className="flex flex-row justify-center">
           <h2 className="text-black font-bold text-3xl">

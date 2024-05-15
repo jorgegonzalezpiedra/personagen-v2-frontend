@@ -1,14 +1,9 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
 
   const navItems = [
     { id: 1, text: "ID's", redirectto: "/idsdata" },
