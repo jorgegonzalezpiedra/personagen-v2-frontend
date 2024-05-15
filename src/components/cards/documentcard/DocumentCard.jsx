@@ -35,6 +35,7 @@ const DocumentCard = ({ idType }) => {
   const loadComponent = async (idType) => {
     try {
       if (idType == "NIF") {
+        console.log("api_key form REST:" + API_KEY);
         const response = await fetch("https://personagen.fly.dev/documents/nif", {headers:{"api-key" : API_KEY}});
         const responseData = await response.json();
         setDocument(responseData.document);
