@@ -6,10 +6,10 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   const navItems = [
-    { id: 1, text: "ID's", redirectto: "/idsdata" },
-    { id: 2, text: "Usuarios", redirectto: "/userdata" },
-    { id: 3, text: "Textos", redirectto: "/textdata" },
-    { id: 4, text: "Docs", redirectto: "/docsdata" },
+    { id: 1, text: "ID's", redirectto: "/idsdata", target:"_self" },
+    { id: 2, text: "Usuarios", redirectto: "/userdata", target:"_self"},
+    { id: 3, text: "Textos", redirectto: "/textdata", target:"_self" },
+    { id: 4, text: "Docs", redirectto: "https://personagen.fly.dev/swagger-ui/index.html#/", target:"_blank" },
   ];
 
   return (
@@ -25,6 +25,7 @@ const Navbar = () => {
             key={item.id}
             to={item.redirectto}
             className="p-4 font-bold text-3xl hover:bg-[#D1BB9E] text-[#592407] rounded-xl m-2 cursor-pointer duration-300"
+            target={item.target}
           >
             {item.text}
           </Link>
