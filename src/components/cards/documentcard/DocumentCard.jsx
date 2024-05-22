@@ -1,5 +1,5 @@
 import "./DocumentCard.css";
-import { RestartIcon} from "../../../assets/Icons";
+import { RestartIcon } from "../../../assets/Icons";
 import PropTypes from "prop-types";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useState, useEffect } from "react";
@@ -9,14 +9,11 @@ const DocumentCard = ({ idType }) => {
     loadComponent(idType);
   }, []);
 
+  const [isLoading, setIsLoading] = useState(true);
   const [moreInfo, setMoreInfo] = useState(false);
   const [document, setDocument] = useState("");
   const [number, setNumber] = useState("");
   const API_KEY = import.meta.env.VITE_API_KEY;
-
-  const [nif, setNif] = useState({
-    letter: null,
-  });
 
   const [nie, setNie] = useState({
     firstLetter: null,
@@ -34,19 +31,23 @@ const DocumentCard = ({ idType }) => {
 
   const loadComponent = async (idType) => {
     try {
+      setIsLoading(true);
       if (idType == "NIF") {
-        console.log("api_key form REST:" + API_KEY);
-        const response = await fetch("https://personagen.fly.dev/documents/nif", {headers:{"api-key" : API_KEY}});
+        const response = await fetch(
+          "https://personagen.fly.dev/documents/nif",
+          { headers: { "api-key": API_KEY } }
+        );
         const responseData = await response.json();
+        setIsLoading(false);
         setDocument(responseData.document);
         setNumber(responseData.number);
-        setNif({
-          letter: responseData.letter,
-        });
       }
 
       if (idType == "NIE") {
-        const responseNie = await fetch("https://personagen.fly.dev/documents/nie", {headers:{"api-key" : API_KEY}}); // Replace with your API URL
+        const responseNie = await fetch(
+          "https://personagen.fly.dev/documents/nie",
+          { headers: { "api-key": API_KEY } }
+        ); // Replace with your API URL
         const responseDataNie = await responseNie.json();
         setDocument(responseDataNie.document);
         setNumber(responseDataNie.number);
@@ -57,7 +58,10 @@ const DocumentCard = ({ idType }) => {
       }
 
       if (idType == "CIF") {
-        const responseCif = await fetch("https://personagen.fly.dev/documents/cif", {headers:{"api-key" : API_KEY}});
+        const responseCif = await fetch(
+          "https://personagen.fly.dev/documents/cif",
+          { headers: { "api-key": API_KEY } }
+        );
         const responseDataCif = await responseCif.json();
         setDocument(responseDataCif.document);
         setNumber(responseDataCif.number);
@@ -70,6 +74,7 @@ const DocumentCard = ({ idType }) => {
           controlDigit: responseDataCif.controlDigit,
         });
       }
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -88,40 +93,56 @@ const DocumentCard = ({ idType }) => {
             onClick={() => loadComponent(idType)}
             className="text-black items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
           >
-            <RestartIcon/>
+            <RestartIcon />
           </button>
         </div>
       </div>
       <div className="px-6 py-8 sm:p-10 sm:pt-3 sm:pb-6">
-        <div className="items-center w-full justify-center flex flex-col text-left">
+        <div className="w-full justify-center flex flex-col text-left">
           <div className="mt-2">
             <span className="text-black tracking-tight text-4xl">
               Documento
             </span>
             <CopyToClipboard text={document}>
-              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
-                {document}
-              </span>
+              {!isLoading ? (
+                <span className="h-20 hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
+                  {document}
+                </span>
+              ) : (
+                <span className="w-[352px] h-20 animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-nonejustify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                  CARGANDO
+                </span>
+              )}
             </CopyToClipboard>
           </div>
           <div className="mt-2">
-            <span className="text-black tracking-tight text-4xl">
-              Número
-            </span>
+            <span className="text-black tracking-tight text-4xl">Número</span>
             <CopyToClipboard text={number}>
-              <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
-                {number}
-              </span>
+              {!isLoading ? (
+                <span className="h-20 hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
+                  {number}
+                </span>
+              ) : (
+                <span className="w-[352px] h-20 animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                  CARGANDO
+                </span>
+              )}
             </CopyToClipboard>
           </div>
           {idType == "CIF" && !moreInfo ? (
-            <div className="border-t-2 border-black mt-5">
-              <button
-                onClick={() => setMoreInfo(true)}
-                className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl"
-              >
-                MAS INFO
-              </button>
+            <div className="border-t-2 border-black mt-5 self-center">
+              {!isLoading ? (
+                <button
+                  onClick={() => setMoreInfo(true)}
+                  className="h-20 mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl"
+                >
+                  MAS INFO
+                </button>
+              ) : (
+                <div className="h-20 w-[233.766px] animate-pulse mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                  CARGANDO
+                </div>
+              )}
             </div>
           ) : null}
           {idType == "NIE" && moreInfo ? (
@@ -193,7 +214,7 @@ const DocumentCard = ({ idType }) => {
             </div>
           ) : null}
           {(idType == "NIE" || idType == "CIF") && moreInfo ? (
-            <div className="border-t-2 border-black mt-5">
+            <div className="border-t-2 border-black mt-5 self-center">
               <button
                 onClick={() => setMoreInfo(false)}
                 className="mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl"
