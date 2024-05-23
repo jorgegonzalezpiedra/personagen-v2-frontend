@@ -3,6 +3,8 @@ import { RestartIcon } from "../../../assets/Icons";
 import PropTypes from "prop-types";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DocumentCard = ({ idType }) => {
   useEffect(() => {
@@ -97,9 +99,7 @@ const DocumentCard = ({ idType }) => {
               <RestartIcon />
             </button>
           ) : (
-            <div
-              className="text-black w-[68px] h-[68px] animate-pulse items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
-            ></div>
+            <div className="text-black w-[68px] h-[68px] animate-pulse items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"></div>
           )}
         </div>
       </div>
@@ -109,7 +109,7 @@ const DocumentCard = ({ idType }) => {
             <span className="text-black tracking-tight text-4xl">
               Documento
             </span>
-            <CopyToClipboard text={document}>
+            <CopyToClipboard text={document} onCopy={() => toast.info("Copiado!")}>
               {!isLoading ? (
                 <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                   {document}
@@ -231,6 +231,17 @@ const DocumentCard = ({ idType }) => {
           ) : null}
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        limit={3}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+        theme="light"
+      />
     </div>
   );
 };
