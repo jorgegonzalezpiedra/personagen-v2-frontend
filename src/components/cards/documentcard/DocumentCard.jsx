@@ -123,7 +123,7 @@ const DocumentCard = ({ idType }) => {
           </div>
           <div className="mt-2">
             <span className="text-black tracking-tight text-4xl">Número</span>
-            <CopyToClipboard text={number}>
+            <CopyToClipboard text={number} onCopy={() => toast.info("Copiado!")}>
               {!isLoading ? (
                 <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                   {number}
@@ -157,7 +157,7 @@ const DocumentCard = ({ idType }) => {
                 <span className="text-black tracking-tight text-4xl">
                   Primera letra
                 </span>
-                <CopyToClipboard text={nie.firstLetter}>
+                <CopyToClipboard text={nie.firstLetter} onCopy={() => toast.info("Copiado!")}>
                   <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8py-4 text-4xl">
                     {nie.firstLetter}
                   </span>
@@ -167,7 +167,7 @@ const DocumentCard = ({ idType }) => {
                 <span className="text-black tracking-tight text-4xl">
                   Última letra
                 </span>
-                <CopyToClipboard text={nie.lastLetter}>
+                <CopyToClipboard text={nie.lastLetter} onCopy={() => toast.info("Copiado!")}>
                   <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                     {nie.lastLetter}
                   </span>
@@ -181,7 +181,7 @@ const DocumentCard = ({ idType }) => {
                 <span className="text-black tracking-tight text-4xl">
                   Tipo de empresa
                 </span>
-                <CopyToClipboard text={cif.orgTypeCode - cif.orgType}>
+                <CopyToClipboard text={cif.orgTypeCode - cif.orgType} onCopy={() => toast.info("Copiado!")}>
                   <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                     {cif.orgTypeCode} - {cif.orgType}
                   </span>
@@ -191,7 +191,7 @@ const DocumentCard = ({ idType }) => {
                 <span className="text-black tracking-tight text-4xl">
                   Codigo de provincia
                 </span>
-                <CopyToClipboard text={cif.provinceCode - cif.province}>
+                <CopyToClipboard text={cif.provinceCode - cif.province} onCopy={() => toast.info("Copiado!")}>
                   <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                     {cif.provinceCode} - {cif.province}
                   </span>
