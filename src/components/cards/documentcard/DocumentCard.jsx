@@ -89,12 +89,18 @@ const DocumentCard = ({ idType }) => {
       <div className="flex flex-row justify-between">
         <h2 className="text-black font-bold text-3xl">{idType}</h2>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <button
-            onClick={() => loadComponent(idType)}
-            className="text-black items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
-          >
-            <RestartIcon />
-          </button>
+          {!isLoading ? (
+            <button
+              onClick={() => loadComponent(idType)}
+              className="text-black items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
+            >
+              <RestartIcon />
+            </button>
+          ) : (
+            <div
+              className="text-black w-[68px] h-[68px] animate-pulse items-center bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition lg:text-4xl"
+            ></div>
+          )}
         </div>
       </div>
       <div className="px-6 py-8 sm:p-10 sm:pt-3 sm:pb-6">
@@ -105,11 +111,11 @@ const DocumentCard = ({ idType }) => {
             </span>
             <CopyToClipboard text={document}>
               {!isLoading ? (
-                <span className="h-20 hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
+                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                   {document}
                 </span>
               ) : (
-                <span className="w-[352px] h-20 animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-nonejustify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
                   CARGANDO
                 </span>
               )}
@@ -119,11 +125,11 @@ const DocumentCard = ({ idType }) => {
             <span className="text-black tracking-tight text-4xl">Número</span>
             <CopyToClipboard text={number}>
               {!isLoading ? (
-                <span className="h-20 hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
+                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                   {number}
                 </span>
               ) : (
-                <span className="w-[352px] h-20 animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
                   CARGANDO
                 </span>
               )}
@@ -139,7 +145,7 @@ const DocumentCard = ({ idType }) => {
                   MAS INFO
                 </button>
               ) : (
-                <div className="h-20 w-[233.766px] animate-pulse mt-2 text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                <div className=" text-white h-20 w-[233.766px] animate-pulse mt-2 items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
                   CARGANDO
                 </div>
               )}
