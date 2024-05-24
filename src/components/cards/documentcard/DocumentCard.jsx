@@ -40,7 +40,6 @@ const DocumentCard = ({ idType }) => {
           { headers: { "api-key": API_KEY } }
         );
         const responseData = await response.json();
-        setIsLoading(false);
         setDocument(responseData.document);
         setNumber(responseData.number);
       }
@@ -116,7 +115,7 @@ const DocumentCard = ({ idType }) => {
                 </span>
               ) : (
                 <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
-                  CARGANDO
+                  <div className="opacity-0">CARGANDO</div>
                 </span>
               )}
             </CopyToClipboard>
@@ -130,7 +129,7 @@ const DocumentCard = ({ idType }) => {
                 </span>
               ) : (
                 <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
-                  CARGANDO
+                  <div className="opacity-0">CARGANDO</div>
                 </span>
               )}
             </CopyToClipboard>
@@ -146,7 +145,7 @@ const DocumentCard = ({ idType }) => {
                 </button>
               ) : (
                 <div className=" text-white h-20 w-[233.766px] animate-pulse mt-2 items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
-                  CARGANDO
+                  <div className="opacity-0">CARGANDO</div>
                 </div>
               )}
             </div>
