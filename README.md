@@ -22,5 +22,5 @@ Puedes ver la aplicacion en funcionamiento [aquí](https://jorgegonzalezpiedra.g
 ![](<https://badgewind.vercel.app/api/-Javascript?badgeStyle=rounded-full&leftStyle=rounded-full&rightStyle=bg-transparent|font-black|w-20&icon=simple-icons:javascript&iconStyle=text-(@F7FF00)|w-5|h-5>)
 ![](<https://badgewind.vercel.app/api/-Tailwind?badgeStyle=rounded-full&leftStyle=rounded-full&rightStyle=bg-transparent|font-black|w-20&icon=simple-icons:tailwindcss&iconStyle=text-(@FFFFFF)|w-5|h-5>)
 
-## Contribuciones 👩‍💻
+## Contribuciones 👩‍💻🙌
 Cualquier contribución al proyecto será bien recibida 😄
