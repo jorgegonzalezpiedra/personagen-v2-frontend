@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route exact path="/" element={<Navigate to="/idsdata"/>}/>
         <Route path="/idsdata" element={<IdsPage />} />
         <Route path="/userdata" element={<ProfilePage />} />
-        <Route path="/textdata" element={<TextPage />} />
+        {/* <Route path="/textdata" element={<TextPage />} /> */}
         <Route path="/docsdata" element={<DocsPage />} />
       </Routes>
     </BrowserRouter>

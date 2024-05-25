@@ -7,7 +7,6 @@ const Navbar = () => {
   const navItems = [
     { id: 1, text: "Documentos", redirectto: "/idsdata", target:"_self" },
     { id: 2, text: "Perfiles", redirectto: "/userdata", target:"_self"},
-    { id: 3, text: "Textos", redirectto: "/textdata", target:"_self" },
     { id: 4, text: "API", redirectto: "https://personagen.fly.dev/swagger-ui/index.html#/", target:"_blank" },
   ];
 
