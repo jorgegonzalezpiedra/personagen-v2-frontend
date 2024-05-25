@@ -96,7 +96,7 @@ const ProfileCard = ({ profileType }) => {
   return (
     <div className="flex flex-col border-2 mt-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[1000px] sm:max-xl:mt-5">
       <div className="flex flex-row justify-between">
-        <h2 className="text-black font-bold text-3xl">{profileType}</h2>
+        <h2 className="text-black font-bold text-3xl">{profileType == "user" ? "Usuario" : "Empresa"}</h2>
         <div className="flex flex-col gap-3 sm:flex-row">
           {!isLoading ? (
             <button
@@ -127,7 +127,7 @@ const ProfileCard = ({ profileType }) => {
                   {document}
                 </span>
               ) : (
-                <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                   <div className="opacity-0">CARGANDO</div>
                 </span>
               )}
@@ -152,7 +152,7 @@ const ProfileCard = ({ profileType }) => {
                       {profile.birthDate}
                     </span>
                   ) : (
-                    <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                    <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                       <div className="opacity-0">CARGANDO</div>
                     </span>
                   )}
@@ -167,7 +167,7 @@ const ProfileCard = ({ profileType }) => {
                       {profile.creationDate}
                     </span>
                   ) : (
-                    <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                    <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                       <div className="opacity-0">CARGANDO</div>
                     </span>
                   )}
@@ -179,7 +179,7 @@ const ProfileCard = ({ profileType }) => {
 
         {/* SECOND ROW */}
         <div className="w-full justify-between flex flex-row text-left">
-          <div className="mt-2  gap-10">
+          <div className="mt-2  gap-5">
             <div className="flex flex-row gap-10">
               <div>
                 <span className="text-black tracking-tight text-4xl">
@@ -194,7 +194,7 @@ const ProfileCard = ({ profileType }) => {
                       {profile.name}
                     </span>
                   ) : (
-                    <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                    <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                       <div className="opacity-0">CARGANDO</div>
                     </span>
                   )}
@@ -204,7 +204,7 @@ const ProfileCard = ({ profileType }) => {
               {profileType == "user" ? (
                 <div>
                   <span className="text-black tracking-tight text-4xl">
-                    Primer apellido
+                    Apellido
                   </span>
                   <CopyToClipboard
                     text={profile.lastName1}
@@ -215,7 +215,7 @@ const ProfileCard = ({ profileType }) => {
                         {profile.lastName1}
                       </span>
                     ) : (
-                      <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                         <div className="opacity-0">CARGANDO</div>
                       </span>
                     )}
@@ -226,7 +226,7 @@ const ProfileCard = ({ profileType }) => {
               {profileType == "user" ? (
                 <div>
                   <span className="text-black tracking-tight text-4xl">
-                    Segundo apellido
+                    Apellido
                   </span>
                   <CopyToClipboard
                     text={profile.lastName2}
@@ -237,7 +237,7 @@ const ProfileCard = ({ profileType }) => {
                         {profile.lastName2}
                       </span>
                     ) : (
-                      <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                         <div className="opacity-0">CARGANDO</div>
                       </span>
                     )}
@@ -266,7 +266,7 @@ const ProfileCard = ({ profileType }) => {
                         {profile.userName}
                       </span>
                     ) : (
-                      <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                         <div className="opacity-0">CARGANDO</div>
                       </span>
                     )}
@@ -286,7 +286,7 @@ const ProfileCard = ({ profileType }) => {
                         {profile.password}
                       </span>
                     ) : (
-                      <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                         <div className="opacity-0">CARGANDO</div>
                       </span>
                     )}
@@ -308,7 +308,7 @@ const ProfileCard = ({ profileType }) => {
                         {profile.industry}
                       </span>
                     ) : (
-                      <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                         <div className="opacity-0">CARGANDO</div>
                       </span>
                     )}
@@ -328,7 +328,7 @@ const ProfileCard = ({ profileType }) => {
                         {cif.orgType}
                       </span>
                     ) : (
-                      <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                         <div className="opacity-0">CARGANDO</div>
                       </span>
                     )}
@@ -356,7 +356,7 @@ const ProfileCard = ({ profileType }) => {
                       {profile.email}
                     </span>
                   ) : (
-                    <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                    <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                       <div className="opacity-0">CARGANDO</div>
                     </span>
                   )}
@@ -383,7 +383,7 @@ const ProfileCard = ({ profileType }) => {
                       {profile.phoneNumber}
                     </span>
                   ) : (
-                    <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                    <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
                       <div className="opacity-0">CARGANDO</div>
                     </span>
                   )}
