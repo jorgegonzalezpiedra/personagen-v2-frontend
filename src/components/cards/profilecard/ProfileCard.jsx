@@ -112,7 +112,7 @@ const ProfileCard = ({ profileType }) => {
       </div>
       <div className="px-6 py-8 sm:p-10 sm:pt-3 sm:pb-6">
         {/* FIRST ROW */}
-        <div className="w-full justify-center flex flex-row text-left">
+        <div className="w-full flex flex-row text-left justify-between">
           {/* DOCUMENT */}
           <div className="mt-2">
             <span className="text-black tracking-tight text-4xl">
@@ -178,26 +178,28 @@ const ProfileCard = ({ profileType }) => {
         </div>
 
         {/* SECOND ROW */}
-        <div className="w-full justify-center flex flex-row text-left">
-          <div className="mt-2">
-            <span className="text-black tracking-tight text-4xl">
-              {profileType == "user" ? "Nombre" : "Razón social"}
-            </span>
-            <div className="flex flex-row">
-              <CopyToClipboard
-                text={profile.name}
-                onCopy={() => toast.info("Copiado!")}
-              >
-                {!isLoading ? (
-                  <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
-                    {profile.name}
-                  </span>
-                ) : (
-                  <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
-                    <div className="opacity-0">CARGANDO</div>
-                  </span>
-                )}
-              </CopyToClipboard>
+        <div className="w-full justify-between flex flex-row text-left">
+          <div className="mt-2  gap-10">
+            <div className="flex flex-row gap-10">
+              <div>
+                <span className="text-black tracking-tight text-4xl">
+                  {profileType == "user" ? "Nombre" : "Razón social"}
+                </span>
+                <CopyToClipboard
+                  text={profile.name}
+                  onCopy={() => toast.info("Copiado!")}
+                >
+                  {!isLoading ? (
+                    <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
+                      {profile.name}
+                    </span>
+                  ) : (
+                    <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
+                      <div className="opacity-0">CARGANDO</div>
+                    </span>
+                  )}
+                </CopyToClipboard>
+              </div>
 
               {profileType == "user" ? (
                 <div>
@@ -247,10 +249,10 @@ const ProfileCard = ({ profileType }) => {
         </div>
 
         {/* THIRD ROW */}
-        <div className="w-full justify-center flex flex-row text-left">
+        <div className="w-full justify-between flex flex-row text-left">
           <div className="mt-2">
             {profileType == "user" ? (
-              <div className="flex flex-row">
+              <div className="flex flex-row gap-10">
                 <div>
                   <span className="text-black tracking-tight text-4xl">
                     Usuario
@@ -292,7 +294,7 @@ const ProfileCard = ({ profileType }) => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-row">
+              <div className="flex flex-row gap-10">
                 <div>
                   <span className="text-black tracking-tight text-4xl">
                     Industria
@@ -337,10 +339,10 @@ const ProfileCard = ({ profileType }) => {
           </div>
         </div>
 
-        {/* SECOND ROW */}
-        <div className="w-full justify-center flex flex-row text-left">
+        {/* FORDTH ROW */}
+        <div className="w-full justify-between flex flex-col text-left">
           <div className="mt-2">
-            <div className="flex flex-row">
+            <div className="flex flex-row gap-10">
               <div>
                 <span className="text-black tracking-tight text-4xl">
                   Email
@@ -360,6 +362,14 @@ const ProfileCard = ({ profileType }) => {
                   )}
                 </CopyToClipboard>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FIFTH ROW */}
+        <div className="w-full justify-between flex flex-row text-left">
+          <div className="mt-2">
+            <div className="flex flex-col">
               <div>
                 <span className="text-black tracking-tight text-4xl">
                   Teléfono
