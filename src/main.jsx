@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import Navbar from "./components/navbar/Navbar.jsx";
 import IdsPage from "./pages/ids/IdsPage.jsx";
 import ProfilePage from "./pages/profile/ProfilePage.jsx";
-import TextPage from "./pages/text/TextPage.jsx";
 import DocsPage from "./pages/docs/DocsPage.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./main.css";

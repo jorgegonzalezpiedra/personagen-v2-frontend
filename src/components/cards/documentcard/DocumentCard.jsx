@@ -86,7 +86,7 @@ const DocumentCard = ({ idType }) => {
   };
 
   return (
-    <div className="flex flex-col border-2 border-black overflow-hidden p-8 rounded-xl shadow-large bg-yellow-200 w-[500px] sm:max-xl:mt-5">
+    <div className="flex flex-col border-2 border-black p-8 rounded-xl shadow-large bg-yellow-200 sm:max-xl:mt-5">
       <div className="flex flex-row justify-between">
         <h2 className="text-black font-bold text-3xl">{idType}</h2>
         <div className="flex flex-col gap-3 sm:flex-row">

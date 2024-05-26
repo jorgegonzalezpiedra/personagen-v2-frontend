@@ -13,7 +13,7 @@ export default {
       'sm': '320px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '481px',
+      'md': '655px',
       // => @media (min-width: 768px) { ... }
 
       'lg': '641px',
