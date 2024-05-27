@@ -86,7 +86,7 @@ const DocumentCard = ({ idType }) => {
   };
 
   return (
-    <div className="flex flex-col border-2 border-black p-8 rounded-xl shadow-large bg-yellow-200 sm:max-xl:mt-5">
+    <div className="flex flex-col border-2 border-black p-8 rounded-xl shadow-large bg-yellow-200 sm:max-xl:mt-5 max-w-[500px]">
       <div className="flex flex-row justify-between">
         <h2 className="text-black font-bold text-3xl">{idType}</h2>
         <div className="flex flex-col gap-3 sm:flex-row">
@@ -111,7 +111,7 @@ const DocumentCard = ({ idType }) => {
             <CopyToClipboard text={document} onCopy={() => toast.info("Copiado!")}>
               {!isLoading ? (
                 <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
-                  {document}
+                  <div>{document}</div>
                 </span>
               ) : (
                 <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
@@ -125,7 +125,7 @@ const DocumentCard = ({ idType }) => {
             <CopyToClipboard text={number} onCopy={() => toast.info("Copiado!")}>
               {!isLoading ? (
                 <span className="hover:cursor-copyx text-black items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none hover:bg-black hover:shadow-none hover:text-white justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition w-full px-8 py-4 text-4xl">
-                  {number}
+                  <div>{number}</div>
                 </span>
               ) : (
                 <span className="text-white w-[352px] animate-pulse items-center inline-flex bg-white border-2 border-black duration-200 ease-in-out focus:outline-none justify-center rounded-xl shadow-[5px_5px_black] text-center transform transition px-8 py-4 text-4xl">
